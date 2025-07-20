@@ -66,17 +66,17 @@ const TradingMarkets = () => {
                 <SectionHeader
                     title="Live Trading Markets"
                     subtitle="Trade your opinions on real-world events across multiple categories"
-                    gradient={true}
+                    gradient={false}
                 />
 
                 {/* Category Tabs */}
-                <div className="flex flex-wrap justify-center gap-4 mb-8">
+                <div className="flex flex-wrap justify-center gap-2 mb-8">
                     {['All', 'Sports', 'Finance', 'Politics', 'Entertainment', 'Crypto', 'Economy'].map((category) => (
                         <button
                             key={category}
-                            className={`px-6 py-2 rounded-full border transition-all duration-300 ${category === 'All'
-                                ? 'bg-gradient-to-r from-[#E1F39F] to-[#087DE6] text-black border-transparent font-semibold'
-                                : 'border-gray-700 text-gray-400 hover:border-[#087DE6] hover:text-white'
+                            className={`px-4 py-2 text-sm rounded-lg transition-all duration-200 ${category === 'All'
+                                ? 'bg-white text-gray-900 font-medium'
+                                : 'bg-white/10 text-gray-300 hover:bg-white/20 hover:text-white backdrop-blur-sm'
                                 }`}
                         >
                             {category}
@@ -101,7 +101,7 @@ const TradingMarkets = () => {
 
                 {/* View More Button */}
                 <div className="text-center">
-                    <button className="bg-gradient-to-r from-[#E1F39F] to-[#087DE6] text-black font-semibold px-8 py-3 rounded-full hover:shadow-lg transition-all duration-300 transform hover:scale-105">
+                    <button className="bg-white text-gray-900 font-medium px-8 py-3 rounded-lg hover:bg-gray-100 transition-all duration-200">
                         View All Markets
                     </button>
                 </div>

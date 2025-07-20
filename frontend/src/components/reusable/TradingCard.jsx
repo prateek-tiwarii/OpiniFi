@@ -10,24 +10,24 @@ const TradingCard = ({
     trending = false
 }) => {
     return (
-        <div className="bg-gray-900 rounded-lg overflow-hidden border border-gray-800 hover:border-[#087DE6]/50 transition-all duration-300 hover:transform hover:scale-105">
+        <div className="bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 hover:border-white/20 transition-all duration-200 hover:bg-white/10">
             {/* Card Header */}
             <div className="relative">
                 {image && (
                     <img
                         src={image}
                         alt={question}
-                        className="w-full h-32 object-cover"
+                        className="w-full h-32 object-cover rounded-t-xl"
                     />
                 )}
-                <div className="absolute top-2 left-2">
-                    <span className="bg-black/70 text-white text-xs px-2 py-1 rounded-full">
+                <div className="absolute top-3 left-3">
+                    <span className="bg-black/50 backdrop-blur-sm text-white text-xs px-2 py-1 rounded-md">
                         {category}
                     </span>
                 </div>
                 {trending && (
-                    <div className="absolute top-2 right-2">
-                        <span className="bg-gradient-to-r from-[#E1F39F] to-[#087DE6] text-black text-xs px-2 py-1 rounded-full font-semibold">
+                    <div className="absolute top-3 right-3">
+                        <span className="bg-white text-gray-900 text-xs px-2 py-1 rounded-md font-medium">
                             🔥 Trending
                         </span>
                     </div>
@@ -35,28 +35,28 @@ const TradingCard = ({
             </div>
 
             {/* Card Content */}
-            <div className="p-4">
-                <h3 className="text-white font-medium text-sm mb-3 leading-tight">
+            <div className="p-5">
+                <h3 className="text-white font-medium text-sm mb-4 leading-relaxed">
                     {question}
                 </h3>
 
                 {/* Traders Count */}
                 <div className="flex items-center text-gray-400 text-xs mb-4">
-                    <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                    <svg className="w-3 h-3 mr-2" fill="currentColor" viewBox="0 0 20 20">
                         <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z" />
                     </svg>
                     {traders.toLocaleString()} traders
                 </div>
 
                 {/* Price Options */}
-                <div className="grid grid-cols-2 gap-2">
-                    <button className="bg-green-600/20 border border-green-600/50 text-green-400 py-2 px-3 rounded-lg hover:bg-green-600/30 transition-colors">
-                        <div className="text-xs">Yes</div>
-                        <div className="font-semibold">₹{yesPrice}</div>
+                <div className="grid grid-cols-2 gap-3">
+                    <button className="bg-white/10 border border-white/20 text-white py-2.5 px-3 rounded-lg hover:bg-white/20 transition-all duration-200">
+                        <div className="text-xs text-gray-400 mb-1">Yes</div>
+                        <div className="font-medium">₹{yesPrice}</div>
                     </button>
-                    <button className="bg-red-600/20 border border-red-600/50 text-red-400 py-2 px-3 rounded-lg hover:bg-red-600/30 transition-colors">
-                        <div className="text-xs">No</div>
-                        <div className="font-semibold">₹{noPrice}</div>
+                    <button className="bg-white/10 border border-white/20 text-white py-2.5 px-3 rounded-lg hover:bg-white/20 transition-all duration-200">
+                        <div className="text-xs text-gray-400 mb-1">No</div>
+                        <div className="font-medium">₹{noPrice}</div>
                     </button>
                 </div>
             </div>
