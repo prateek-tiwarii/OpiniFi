@@ -2,8 +2,10 @@ import React from 'react'
 import TradingCard from './reusable/TradingCard'
 import SectionHeader from './reusable/SectionHeader'
 import heroBg from '../assets/hero-bg.png'
+import { useTheme } from '../hooks/useTheme'
 
 const TradingMarkets = () => {
+    const { isDark } = useTheme();
     const tradingCards = [
         {
             question: "Will India's GDP growth rate be 6.5% or more in FY25-26?",
@@ -53,15 +55,18 @@ const TradingMarkets = () => {
 
     return (
         <section
-            className="relative w-full py-16 px-4"
-            style={{
+            id="markets"
+            className={`relative w-full py-16 px-4 ${isDark ? 'dark' : 'light'}`}
+            style={isDark ? {
                 backgroundImage: `url(${heroBg})`,
                 backgroundSize: '100% 100%',
                 backgroundPosition: 'center',
                 backgroundRepeat: 'no-repeat'
+            } : {
+                backgroundColor: '#f8fafc'
             }}
         >
-            <div className="absolute inset-0 bg-black/50"></div>
+            <div className={`absolute inset-0 ${isDark ? 'bg-black/50' : 'bg-white/20'}`}></div>
             <div className="max-w-7xl mx-auto relative z-10">
                 <SectionHeader
                     title="Live Trading Markets"
@@ -75,8 +80,12 @@ const TradingMarkets = () => {
                         <button
                             key={category}
                             className={`px-4 py-2 text-sm rounded-lg transition-all duration-200 ${category === 'All'
-                                ? 'bg-white text-gray-900 font-medium'
-                                : 'bg-white/10 text-gray-300 hover:bg-white/20 hover:text-white backdrop-blur-sm'
+                                ? isDark
+                                    ? 'bg-white text-gray-900 font-medium'
+                                    : 'bg-gray-900 text-white font-medium'
+                                : isDark
+                                    ? 'bg-white/10 text-gray-300 hover:bg-white/20 hover:text-white backdrop-blur-sm'
+                                    : 'bg-white text-gray-600 hover:bg-gray-100 hover:text-gray-900 border border-gray-200'
                                 }`}
                         >
                             {category}
@@ -101,7 +110,10 @@ const TradingMarkets = () => {
 
                 {/* View More Button */}
                 <div className="text-center">
-                    <button className="bg-white text-gray-900 font-medium px-8 py-3 rounded-lg hover:bg-gray-100 transition-all duration-200">
+                    <button className={`font-medium px-8 py-3 rounded-lg transition-all duration-200 ${isDark
+                            ? 'bg-white text-gray-900 hover:bg-gray-100'
+                            : 'bg-gray-900 text-white hover:bg-gray-800'
+                        }`}>
                         View All Markets
                     </button>
                 </div>

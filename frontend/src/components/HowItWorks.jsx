@@ -2,8 +2,11 @@ import React from 'react'
 import FeatureCard from './reusable/FeatureCard'
 import SectionHeader from './reusable/SectionHeader'
 import heroBg from '../assets/hero-bg.png'
+import { useTheme } from '../hooks/useTheme'
 
 const HowItWorks = () => {
+    const { isDark } = useTheme();
+
     const steps = [
         {
             icon: "👁️",
@@ -33,20 +36,22 @@ const HowItWorks = () => {
 
     return (
         <section
+            id="how-it-works"
             className="relative w-full py-16 px-4"
             style={{
-                backgroundImage: `url(${heroBg})`,
+                backgroundColor: !isDark ? '#f8fafc' : 'transparent',
+                backgroundImage: isDark ? `url(${heroBg})` : 'none',
                 backgroundSize: '100% 100%',
                 backgroundPosition: 'center',
                 backgroundRepeat: 'no-repeat'
             }}
         >
-            <div className="absolute inset-0 bg-black/50"></div>
+            <div className={`absolute inset-0 ${isDark ? 'bg-black/50' : 'bg-white/10'}`}></div>
             <div className="max-w-7xl mx-auto relative z-10">
                 <SectionHeader
                     title="How OpiniFi Works"
                     subtitle="Turn your knowledge into profit with our simple 4-step process"
-                    gradient={true}
+                    gradient={false}
                 />
 
                 {/* Steps Grid */}
@@ -68,14 +73,14 @@ const HowItWorks = () => {
                 </div>
 
                 {/* Call to Action */}
-                <div className="text-center bg-gradient-to-r from-[#E1F39F]/10 to-[#087DE6]/10 rounded-lg p-8">
-                    <h3 className="text-2xl font-bold text-white mb-4">Ready to Start Trading?</h3>
-                    <p className="text-gray-400 mb-6">Join thousands of traders who are already profiting from their predictions</p>
+                <div className={`text-center ${isDark ? 'bg-gradient-to-r from-[#E1F39F]/10 to-[#087DE6]/10' : 'bg-white/80 backdrop-blur-sm'} rounded-lg p-8`}>
+                    <h3 className={`text-2xl font-bold ${isDark ? 'text-white' : 'text-gray-900'} mb-4`}>Ready to Start Trading?</h3>
+                    <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'} mb-6`}>Join thousands of traders who are already profiting from their predictions</p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
                         <button className="bg-gradient-to-r from-[#E1F39F] to-[#087DE6] text-black font-semibold px-8 py-3 rounded-full hover:shadow-lg transition-all duration-300">
                             Download App
                         </button>
-                        <button className="border-2 border-white text-white font-semibold px-8 py-3 rounded-full hover:bg-white hover:text-black transition-all duration-300">
+                        <button className={`border-2 ${isDark ? 'border-white text-white hover:bg-white hover:text-black' : 'border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white'} font-semibold px-8 py-3 rounded-full transition-all duration-300`}>
                             Learn More
                         </button>
                     </div>

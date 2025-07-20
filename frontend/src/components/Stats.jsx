@@ -1,7 +1,10 @@
 import React from 'react'
 import heroBg from '../assets/hero-bg.png'
+import { useTheme } from '../hooks/useTheme'
 
 const Stats = () => {
+    const { isDark } = useTheme();
+
     const stats = [
         {
             number: "$2.5M+",
@@ -31,22 +34,24 @@ const Stats = () => {
 
     return (
         <section
+            id="stats"
             className="relative w-full py-16 px-4"
             style={{
-                backgroundImage: `url(${heroBg})`,
+                backgroundColor: !isDark ? '#f8fafc' : 'transparent',
+                backgroundImage: isDark ? `url(${heroBg})` : 'none',
                 backgroundSize: '100% 100%',
                 backgroundPosition: 'center',
                 backgroundRepeat: 'no-repeat'
             }}
         >
-            <div className="absolute inset-0 bg-black/50"></div>
+            <div className={`absolute inset-0 ${isDark ? 'bg-black/50' : 'bg-white/10'}`}></div>
             <div className="max-w-7xl mx-auto relative z-10">
                 {/* Header */}
                 <div className="text-center mb-12">
-                    <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#E1F39F] to-[#087DE6] bg-clip-text text-transparent mb-4">
+                    <h2 className={`text-3xl md:text-4xl font-semibold ${isDark ? 'text-white' : 'text-gray-900'} mb-4`}>
                         OpiniFi by the Numbers
                     </h2>
-                    <p className="text-gray-400 text-lg">
+                    <p className={`${isDark ? 'text-gray-300' : 'text-gray-600'} text-base`}>
                         Join the fastest-growing opinion trading community
                     </p>
                 </div>
@@ -56,35 +61,35 @@ const Stats = () => {
                     {stats.map((stat, index) => (
                         <div
                             key={index}
-                            className="bg-gray-900 rounded-lg p-6 text-center border border-gray-800 hover:border-gray-700 transition-all duration-300 hover:transform hover:scale-105"
+                            className={`${isDark ? 'bg-white/5 border-white/10 hover:border-white/20 hover:bg-white/10' : 'bg-white/80 border-gray-200 hover:border-gray-300 hover:bg-white/90'} backdrop-blur-sm rounded-xl p-6 text-center border transition-all duration-200`}
                         >
-                            <div className={`w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r ${stat.color} flex items-center justify-center`}>
+                            <div className={`w-16 h-16 mx-auto mb-4 rounded-full ${isDark ? 'bg-white/10' : 'bg-gray-100'} flex items-center justify-center`}>
                                 <span className="text-2xl">{stat.icon}</span>
                             </div>
-                            <div className="text-3xl font-bold text-white mb-2">{stat.number}</div>
-                            <div className="text-gray-400 text-sm">{stat.label}</div>
+                            <div className={`text-3xl font-semibold ${isDark ? 'text-white' : 'text-gray-900'} mb-2`}>{stat.number}</div>
+                            <div className={`${isDark ? 'text-gray-300' : 'text-gray-600'} text-sm`}>{stat.label}</div>
                         </div>
                     ))}
                 </div>
 
                 {/* Live Activity Feed */}
-                <div className="mt-12 bg-gray-900 rounded-lg p-6 border border-gray-800">
-                    <h3 className="text-xl font-bold text-white mb-4 flex items-center">
-                        <span className="w-3 h-3 bg-green-500 rounded-full mr-2 animate-pulse"></span>
+                <div className={`mt-12 ${isDark ? 'bg-white/5 border-white/10' : 'bg-white/80 border-gray-200'} backdrop-blur-sm rounded-xl p-6 border`}>
+                    <h3 className={`text-xl font-medium ${isDark ? 'text-white' : 'text-gray-900'} mb-4 flex items-center`}>
+                        <span className="w-3 h-3 bg-green-400 rounded-full mr-2 animate-pulse"></span>
                         Live Activity
                     </h3>
                     <div className="space-y-3">
                         <div className="flex justify-between items-center text-sm">
-                            <span className="text-gray-400">₹50,000 traded in "Bitcoin $100K" market</span>
-                            <span className="text-[#E1F39F]">2 seconds ago</span>
+                            <span className={`${isDark ? 'text-gray-300' : 'text-gray-600'}`}>₹50,000 traded in "Bitcoin $100K" market</span>
+                            <span className={`${isDark ? 'text-white' : 'text-gray-900'}`}>2 seconds ago</span>
                         </div>
                         <div className="flex justify-between items-center text-sm">
-                            <span className="text-gray-400">New market: "Will India win the next World Cup?"</span>
-                            <span className="text-[#087DE6]">1 minute ago</span>
+                            <span className={`${isDark ? 'text-gray-300' : 'text-gray-600'}`}>New market: "Will India win the next World Cup?"</span>
+                            <span className={`${isDark ? 'text-white' : 'text-gray-900'}`}>1 minute ago</span>
                         </div>
                         <div className="flex justify-between items-center text-sm">
-                            <span className="text-gray-400">₹25,000 profit realized in Sports category</span>
-                            <span className="text-[#E1F39F]">3 minutes ago</span>
+                            <span className={`${isDark ? 'text-gray-300' : 'text-gray-600'}`}>₹25,000 profit realized in Sports category</span>
+                            <span className={`${isDark ? 'text-white' : 'text-gray-900'}`}>3 minutes ago</span>
                         </div>
                     </div>
                 </div>

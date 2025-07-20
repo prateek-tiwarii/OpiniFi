@@ -2,8 +2,11 @@ import React from 'react';
 import FeatureCard from './reusable/FeatureCard';
 import SectionHeader from './reusable/SectionHeader';
 import heroBg from '../assets/hero-bg.png';
+import { useTheme } from '../hooks/useTheme';
 
 const Features = () => {
+    const { isDark } = useTheme();
+
     const features = [
         {
             title: "Real-Time Trading",
@@ -54,19 +57,22 @@ const Features = () => {
 
     return (
         <section
+            id="features"
             className="relative min-h-screen py-20"
             style={{
-                backgroundImage: `url(${heroBg})`,
+                backgroundColor: !isDark ? '#f8fafc' : 'transparent',
+                backgroundImage: isDark ? `url(${heroBg})` : 'none',
                 backgroundSize: '100% 100%',
                 backgroundPosition: 'center',
                 backgroundRepeat: 'no-repeat',
             }}
         >
-            <div className="absolute inset-0 bg-black/50"></div>
+            <div className={`absolute inset-0 ${isDark ? 'bg-black/50' : 'bg-white/10'}`}></div>
             <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <SectionHeader
                     title="Platform Features"
                     subtitle="Everything you need to trade opinions successfully"
+                    gradient={false}
                 />
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
@@ -75,21 +81,21 @@ const Features = () => {
                     ))}
                 </div>
 
-                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
-                    <h3 className="text-3xl font-bold text-white text-center mb-4">
+                <div className={`${isDark ? 'bg-white/5 backdrop-blur-sm' : 'bg-white/80 backdrop-blur-sm'} rounded-2xl p-8 border ${isDark ? 'border-white/10' : 'border-gray-200'}`}>
+                    <h3 className={`text-3xl font-medium ${isDark ? 'text-white' : 'text-gray-900'} text-center mb-4`}>
                         Trust & Safety
                     </h3>
-                    <p className="text-gray-300 text-center mb-8 max-w-2xl mx-auto">
+                    <p className={`${isDark ? 'text-gray-300' : 'text-gray-600'} text-center mb-8 max-w-2xl mx-auto`}>
                         Your security and trust are our top priorities. We've built our platform with the highest standards of safety and transparency.
                     </p>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         {trustFeatures.map((feature, index) => (
                             <div key={index} className="text-center">
-                                <h4 className="text-xl font-semibold text-white mb-3">
+                                <h4 className={`text-xl font-semibold ${isDark ? 'text-white' : 'text-gray-900'} mb-3`}>
                                     {feature.title}
                                 </h4>
-                                <p className="text-gray-300">
+                                <p className={`${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
                                     {feature.description}
                                 </p>
                             </div>

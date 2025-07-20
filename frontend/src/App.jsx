@@ -6,11 +6,12 @@ import Features from './components/Features'
 import Stats from './components/Stats'
 import NewsFeed from './components/NewsFeed'
 import Footer from './components/reusable/Footer'
+import { ThemeProvider } from './contexts/ThemeProvider'
 
 function App() {
 
   return (
-    <>
+    <ThemeProvider>
       <Hero />
       <TradingMarkets />
       <HowItWorks />
@@ -18,7 +19,7 @@ function App() {
       <Stats />
       <NewsFeed />
       <Footer />
-    </>
+    </ThemeProvider>
   )
 }
 
