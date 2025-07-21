@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import logo from '../../assets/Image.png'
 import navbarBg from '../../assets/navbarBg.png'
 import { useTheme } from '../../hooks/useTheme'
@@ -89,16 +90,15 @@ const Navbar = () => {
             title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
           >
             {isDark ? '☀️' : '🌙'}
-          </button>
-          <button
-            onClick={() => scrollToSection('markets')}
-            className={`px-2 sm:px-4 py-1 sm:py-2 rounded cursor-pointer text-xs sm:text-sm font-medium transition-all duration-200 ${isDark
+          </button>          <Link
+            to="/admin"
+            className={`px-2 sm:px-4 py-1 sm:py-2 rounded cursor-pointer text-xs sm:text-sm font-medium transition-all duration-200 inline-block text-center ${isDark
               ? 'bg-white text-[#2F3031] hover:bg-gray-100'
               : 'bg-gray-900 text-white hover:bg-gray-800'
               }`}
           >
-            Start Trading Now
-          </button>
+            Admin Dashboard
+          </Link>
         </div>
       </div>
 
@@ -122,16 +122,15 @@ const Navbar = () => {
                 </button>
               </li>
             ))}
-          </ul>
-          <button
-            onClick={() => scrollToSection('hero')}
-            className={`px-4 py-2 rounded cursor-pointer w-full mt-4 font-medium transition-all duration-200 ${isDark
+          </ul>          <Link
+            to="/admin"
+            className={`px-4 py-2 rounded cursor-pointer w-full mt-4 font-medium transition-all duration-200 inline-block text-center ${isDark
               ? 'bg-white text-[#2F3031] hover:bg-gray-100'
               : 'bg-gray-900 text-white hover:bg-gray-800'
               }`}
           >
-            Start Trading Now
-          </button>
+            Admin Dashboard
+          </Link>
         </div>
       )}
     </div>

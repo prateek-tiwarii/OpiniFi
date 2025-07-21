@@ -3,6 +3,7 @@ import heroBg from '../assets/hero-bg.png'
 import switchLogo from '../assets/switchLogo.png';
 import Button_container from '../assets/Button container.png';
 import { useTheme } from '../hooks/useTheme';
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
     const { isDark } = useTheme();
@@ -47,15 +48,19 @@ const Hero = () => {
                                 Join our marketplace where your insights shape outcomes and earn real rewards. Trade your predictions and turn knowledge into profit
                             </p>
                         </div>
-                    </div>
-                    {/* Call to Action Buttons - Mobile/Tablet only */}
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-[-150px] sm:mt-[-180px] lg:hidden px-4 relative z-10">
-                        <button className="bg-gradient-to-r from-[#E1F39F] to-[#087DE6] text-black font-semibold px-6 sm:px-8 py-3 rounded-full hover:shadow-lg transition-all duration-300 transform hover:scale-105 w-full sm:w-auto max-w-xs">
-                            Start Trading Now
-                        </button>
-                        <button className={`border-2 ${isDark ? 'border-white text-white hover:bg-white hover:text-black' : 'border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white'} font-semibold px-6 sm:px-8 py-3 rounded-full transition-all duration-300 w-full sm:w-auto max-w-xs`}>
-                            Explore Markets
-                        </button>
+                    </div>                    {/* Call to Action Buttons - Mobile/Tablet only */}                    <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-[-150px] sm:mt-[-180px] lg:hidden px-4 relative z-10">
+                        <Link
+                            to="/admin"
+                            className="bg-gradient-to-r from-[#E1F39F] to-[#087DE6] text-black font-semibold px-6 sm:px-8 py-3 rounded-full hover:shadow-lg transition-all duration-300 transform hover:scale-105 w-full sm:w-auto max-w-xs text-center no-underline"
+                        >
+                            Admin Dashboard
+                        </Link>
+                        <Link
+                            to="/demo"
+                            className={`border-2 ${isDark ? 'border-white text-white hover:bg-white hover:text-black' : 'border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white'} font-semibold px-6 sm:px-8 py-3 rounded-full transition-all duration-300 w-full sm:w-auto max-w-xs text-center no-underline`}
+                        >
+                            View Demo
+                        </Link>
                     </div>
 
                     {/* Original Button Container Image - Desktop only */}
